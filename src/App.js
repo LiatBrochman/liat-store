@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import SignInPage from "./pages/SignInPage";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {init} from "./redux/userSlice";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        dispatch(init())
+            .then(() => setIsLoading(false))
+            .catch(error => {
+                console.error(error);
+                setIsLoading(false);
+            });
+    }, [dispatch]);
+
+
+    return (
+        <div>
+            {user.isLoggedIn ? (
+                isLoading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <ProductsPage/>
+                )
+            ) : (
+                <SignInPage/>
+            )}
+        </div>
+    );
 }
 
 export default App;
