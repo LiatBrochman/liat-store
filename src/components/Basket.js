@@ -1,6 +1,5 @@
 import React from 'react';
 import Product from "./Product";
-import {useDispatch} from "react-redux";
 
 function Basket(products) {
 
