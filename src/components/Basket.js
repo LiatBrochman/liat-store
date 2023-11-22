@@ -3,7 +3,6 @@ import Product from "./Product";
 import {useDispatch} from "react-redux";
 
 function Basket(products) {
-    const dispatch = useDispatch()
 
 
     return (

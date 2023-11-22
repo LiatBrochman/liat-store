@@ -5,7 +5,7 @@ import {MapPinIcon, ShoppingCartIcon, UserIcon} from "@heroicons/react/24/outlin
 import {MagnifyingGlassIcon,} from "@heroicons/react/20/solid";
 import logo from '../img/sotre-liat-logo.png';
 
-function Navbar(products) {
+function Navbar() {
     const dispatch = useDispatch()
     const [text, setText] = useState('');
 
@@ -16,7 +16,7 @@ function Navbar(products) {
 
 
     function handleSearchProduct() {
-        function searchProduct(text) {
+        function searchProduct() {
             return undefined;
         }
 
@@ -30,7 +30,7 @@ function Navbar(products) {
 
     return (
         <div className="flex row  justify-around items-center pr-3 pt-5 pb-3">
-            <img src={logo} className="h-24"/>
+            <img src={logo} className="h-24" alt="logo"/>
             <UserIcon className="h-7 w-7 text-stone-600" onClick={handleSignOut}/>
             <MapPinIcon className="h-7 w-7 text-stone-600"/>
             <p className="text-center">ISRAEL</p>
